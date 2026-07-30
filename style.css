@@ -33,10 +33,32 @@
 
 body{
     font-family:'Inter',sans-serif;
-    background:var(--bg);
+    background:#070709;
+    background-image:
+        radial-gradient(circle at 15% 20%,rgba(0,174,255,.12),transparent 30%),
+        radial-gradient(circle at 80% 10%,rgba(255,255,255,.08),transparent 35%),
+        radial-gradient(circle at 80% 90%,rgba(0,255,255,.08),transparent 30%),
+        radial-gradient(circle at 10% 90%,rgba(115,0,255,.10),transparent 30%);
+    background-attachment:fixed;
     color:var(--text);
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
+}
+
+/* Apple aurora sweep — a soft band of light drifting across the page */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,.03),transparent);
+    animation:aurora 10s linear infinite;
+    z-index:-2;
+}
+
+@keyframes aurora{
+    0%{ transform:translateX(-100%); }
+    100%{ transform:translateX(100%); }
 }
 
 ::-webkit-scrollbar{ width:7px; }
@@ -164,6 +186,8 @@ img{ max-width:100%; display:block; }
     border-radius:40px;
     font-weight:600;
     font-size:13.5px;
+    position:relative;
+    overflow:hidden;
     transition:transform .35s var(--ease), box-shadow .35s var(--ease);
 }
 
@@ -249,6 +273,8 @@ img{ max-width:100%; display:block; }
     border-radius:40px;
     font-weight:600;
     font-size:14.5px;
+    position:relative;
+    overflow:hidden;
     transition:.4s var(--ease);
 }
 
@@ -256,6 +282,29 @@ img{ max-width:100%; display:block; }
     background:var(--surface-strong);
     border-color:rgba(255,255,255,.3);
     transform:translateY(-4px);
+}
+
+/* Apple shine sweep — a soft light band that slides across on hover */
+.buy-btn::before,
+.join-btn::before,
+.contact-btn::before,
+.telegram-btn::before,
+.whatsapp-btn::before{
+    content:"";
+    position:absolute;
+    top:0; left:-100%;
+    width:100%; height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);
+    transition:.6s;
+    pointer-events:none;
+}
+
+.buy-btn:hover::before,
+.join-btn:hover::before,
+.contact-btn:hover::before,
+.telegram-btn:hover::before,
+.whatsapp-btn:hover::before{
+    left:100%;
 }
 
 /* ripple for buttons */
@@ -370,6 +419,22 @@ img{ max-width:100%; display:block; }
     0%{ transform:translateY(0); }
     50%{ transform:translateY(-16px); }
     100%{ transform:translateY(0); }
+}
+
+/* ========================================================= */
+/* APPLE MOUSE GLOW — large soft blob trailing the cursor      */
+/* ========================================================= */
+
+.cursor-glow{
+    position:fixed;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.10),transparent 70%);
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    filter:blur(60px);
+    z-index:-1;
 }
 
 .hero::before{
@@ -648,6 +713,8 @@ img{ max-width:100%; display:block; }
     border-radius:50px;
     font-weight:600;
     font-size:14.5px;
+    position:relative;
+    overflow:hidden;
     transition:.4s var(--ease);
     border:1px solid var(--border);
     backdrop-filter:blur(14px);
@@ -806,6 +873,22 @@ footer p{ color:var(--text-mute); line-height:1.7; font-size:13.5px; }
 @keyframes fadeIn{
     from{ opacity:0; transform:translateY(36px); }
     to{ opacity:1; transform:translateY(0); }
+}
+
+/* ========================================================= */
+/* GLASS SECTION REVEAL — whole sections rise in as you scroll */
+/* (hero is excluded so the page doesn't start blank)          */
+/* ========================================================= */
+
+.reveal-section{
+    opacity:0;
+    transform:translateY(80px);
+    transition:opacity 1s var(--ease), transform 1s var(--ease);
+}
+
+.reveal-section.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
 /* ========================================================= */
