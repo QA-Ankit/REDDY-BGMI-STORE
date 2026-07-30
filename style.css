@@ -1,10 +1,28 @@
-/* ========================================= */
-/* REDDY BGMI ID STORE */
-/* PREMIUM CSS */
-/* PART 1 */
-/* ========================================= */
+/* ========================================================= */
+/* REDDY BGMI ID STORE — PREMIUM (Apple x Gaming)             */
+/* Matte black canvas, soft white glass, one iridescent       */
+/* signature edge-glow on cards. Gold retired, subtle blue    */
+/* accent kept for gaming DNA.                                */
+/* ========================================================= */
 
-/* Google Font Family */
+:root{
+    --bg:#08080a;
+    --bg-soft:#0f0f12;
+    --surface:rgba(255,255,255,.05);
+    --surface-strong:rgba(255,255,255,.09);
+    --border:rgba(255,255,255,.10);
+    --border-strong:rgba(255,255,255,.18);
+    --text:#f5f5f7;
+    --text-dim:#a1a1a8;
+    --text-mute:#6e6e76;
+    --accent:#ffffff;
+    --accent-blue:#3b9dff;
+    --glow:rgba(255,255,255,.18);
+    --radius-lg:28px;
+    --radius-md:20px;
+    --radius-sm:14px;
+    --ease:cubic-bezier(.16,1,.3,1);
+}
 
 *{
     margin:0;
@@ -14,1477 +32,779 @@
 }
 
 body{
-
-    font-family:'Exo 2',sans-serif;
-    background:#050505;
-    color:#fff;
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
     overflow-x:hidden;
-
+    -webkit-font-smoothing:antialiased;
 }
 
-/* Scrollbar */
+::-webkit-scrollbar{ width:7px; }
+::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.25); border-radius:20px; }
+::-webkit-scrollbar-thumb:hover{ background:rgba(255,255,255,.4); }
+::-webkit-scrollbar-track{ background:var(--bg-soft); }
 
-::-webkit-scrollbar{
+a{ text-decoration:none; color:inherit; }
+ul{ list-style:none; }
+img{ max-width:100%; display:block; }
 
-    width:8px;
+::selection{ background:rgba(255,255,255,.85); color:#0a0a0a; }
 
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:gold;
-    border-radius:20px;
-
-}
-
-::-webkit-scrollbar-track{
-
-    background:#111;
-
-}
-
-/* Links */
-
-a{
-
-    text-decoration:none;
-
-}
-
-/* List */
-
-ul{
-
-    list-style:none;
-
-}
-
-/* Images */
-
-img{
-
-    max-width:100%;
-
-    display:block;
-
-}
-
-/* ========================================= */
+/* ========================================================= */
 /* LOADER */
-/* ========================================= */
+/* ========================================================= */
 
 #loader{
-
     position:fixed;
-
     inset:0;
-
-    background:#050505;
-
+    background:var(--bg);
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     z-index:999999;
-
+    transition:opacity .6s var(--ease), visibility .6s var(--ease);
 }
 
-.loader-content{
-
-    text-align:center;
-
-}
+.loader-content{ text-align:center; }
 
 .loader-logo{
-
-    width:120px;
-
-    height:120px;
-
+    width:96px;
+    height:96px;
     object-fit:contain;
-
     display:block;
-
     margin:0 auto;
-
     animation:floatLogo 3s ease-in-out infinite;
-
-    filter:drop-shadow(0 0 25px gold);
-
+    filter:drop-shadow(0 0 30px rgba(255,255,255,.35));
 }
 
 .loader-content h1{
-
-    font-family:'Chakra Petch',sans-serif;
-
-    margin-top:20px;
-
-    letter-spacing:3px;
-
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:20px;
+    margin-top:22px;
+    letter-spacing:.5px;
+    color:var(--text);
 }
 
 .loader-content p{
-
-    color:#ccc;
-
-    margin:15px 0;
-
+    color:var(--text-mute);
+    margin:12px 0 22px;
+    font-size:14px;
 }
 
 .loading-bar{
-
-    width:260px;
-
-    height:5px;
-
-    background:#222;
-
+    width:220px;
+    height:3px;
+    background:var(--surface);
     border-radius:50px;
-
     overflow:hidden;
-
     margin:0 auto;
-
 }
 
 .loading-fill{
-
     width:0%;
-
     height:100%;
-
-    background:linear-gradient(90deg,#FFD700,#fff,#FFD700);
-
-    animation:loading 3s forwards;
-
+    background:linear-gradient(90deg,rgba(255,255,255,.2),#fff,rgba(255,255,255,.2));
+    animation:loading 2.2s var(--ease) forwards;
 }
 
-@keyframes loading{
+@keyframes loading{ 100%{ width:100%; } }
 
-    100%{
-
-        width:100%;
-
-    }
-
-}
-
-
-/* ========================================= */
-/* NAVBAR */
-/* ========================================= */
+/* ========================================================= */
+/* NAVBAR — frosted glass */
+/* ========================================================= */
 
 .navbar{
-
     position:fixed;
-
-    top:0;
-
-    left:0;
-
+    top:0; left:0;
     width:100%;
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
-    padding:18px 8%;
-
-    backdrop-filter:blur(15px);
-
-    background:rgba(255,255,255,.05);
-
-    border-bottom:1px solid rgba(255,255,255,.08);
-
+    padding:16px 8%;
+    backdrop-filter:blur(20px) saturate(160%);
+    -webkit-backdrop-filter:blur(20px) saturate(160%);
+    background:rgba(10,10,12,.55);
+    border-bottom:1px solid var(--border);
     z-index:9999;
-
+    transition:background .4s var(--ease), box-shadow .4s var(--ease);
 }
 
-.logo{
+.logo{ display:flex; align-items:center; gap:12px; }
+.logo img{ width:42px; border-radius:50%; }
+.logo h2{ font-family:'Inter',sans-serif; font-weight:600; font-size:16px; color:var(--text); letter-spacing:.3px; }
+.logo span{ color:var(--text-mute); font-size:11px; letter-spacing:1px; }
 
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-}
-
-.logo img{
-
-    width:55px;
-
-    border-radius:50%;
-
-}
-
-.logo h2{
-
-    font-family:'Chakra Petch';
-
-    color:#fff;
-
-}
-
-.logo span{
-
-    color:gold;
-
-    font-size:12px;
-
-}
-
-.navbar ul{
-
-    display:flex;
-
-    gap:35px;
-
-}
+.navbar ul{ display:flex; gap:38px; }
 
 .navbar ul li a{
-
-    color:white;
-
-    transition:.3s;
-
+    color:var(--text-dim);
+    font-size:14px;
+    font-weight:500;
+    transition:color .3s var(--ease);
+    position:relative;
 }
 
-.navbar ul li a:hover{
-
-    color:gold;
-
+.navbar ul li a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-6px;
+    width:0; height:1px;
+    background:var(--text);
+    transition:width .3s var(--ease);
 }
+
+.navbar ul li a:hover{ color:var(--text); }
+.navbar ul li a:hover::after{ width:100%; }
 
 .join-btn{
-
-    background:gold;
-
-    color:#111;
-
-    padding:12px 26px;
-
+    background:var(--text);
+    color:#0a0a0a;
+    padding:10px 24px;
     border-radius:40px;
-
     font-weight:600;
-
+    font-size:13.5px;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease);
 }
 
+.join-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 30px rgba(255,255,255,.18);
+}
 
-/* ========================================= */
+/* ========================================================= */
 /* HERO */
-/* ========================================= */
+/* ========================================================= */
 
 .hero{
-
     min-height:100vh;
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
-    padding:130px 8%;
-
+    padding:130px 8% 80px;
+    position:relative;
 }
 
-.hero-content{
-
-    width:55%;
-
-}
+.hero-content{ width:55%; }
 
 .hero h1{
-
-    font-family:'Chakra Petch';
-
-    font-size:68px;
-
-    line-height:80px;
-
+    font-family:'Inter',sans-serif;
+    font-weight:700;
+    font-size:60px;
+    line-height:1.08;
+    letter-spacing:-1.5px;
+    color:var(--text);
 }
 
 .hero h1 span{
-
-    color:gold;
-
+    background:linear-gradient(90deg,#fff,#9fd3ff,#fff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    display:inline-block;
 }
 
 .hero p{
-
-    margin:30px 0;
-
-    color:#ddd;
-
-    font-size:18px;
-
-    line-height:32px;
-
+    margin:26px 0 0;
+    color:var(--text-dim);
+    font-size:17px;
+    line-height:1.6;
+    max-width:520px;
+    font-weight:400;
 }
 
-.hero-image{
-
-    width:38%;
-
-}
+.hero-image{ width:36%; position:relative; }
 
 .hero-image img{
-
     width:100%;
-
     animation:floatLogo 4s ease-in-out infinite;
-
-    filter:drop-shadow(0 0 40px gold);
-
+    filter:drop-shadow(0 20px 60px rgba(255,255,255,.15));
 }
 
-
-.hero-buttons{
-
-    display:flex;
-
-    gap:20px;
-
-    margin-top:35px;
-
-}
+.hero-buttons{ display:flex; gap:16px; margin-top:38px; }
 
 .buy-btn{
-
-    background:gold;
-
-    color:#111;
-
-    padding:16px 35px;
-
+    background:var(--text);
+    color:#0a0a0a;
+    padding:15px 34px;
     border-radius:40px;
-
-    font-weight:700;
-
-    transition:.4s;
-
+    font-weight:600;
+    font-size:14.5px;
+    position:relative;
+    overflow:hidden;
+    transition:transform .4s var(--ease), box-shadow .4s var(--ease);
 }
 
 .buy-btn:hover{
-
-    transform:translateY(-5px);
-
-    box-shadow:0 0 25px gold;
-
+    transform:translateY(-4px);
+    box-shadow:0 12px 40px rgba(255,255,255,.22);
 }
 
 .contact-btn{
-
-    border:2px solid gold;
-
-    color:white;
-
-    padding:16px 35px;
-
+    border:1px solid var(--border-strong);
+    background:var(--surface);
+    backdrop-filter:blur(12px);
+    color:var(--text);
+    padding:15px 34px;
     border-radius:40px;
-
-    transition:.4s;
-
+    font-weight:600;
+    font-size:14.5px;
+    transition:.4s var(--ease);
 }
 
 .contact-btn:hover{
-
-    background:gold;
-
-    color:#111;
-
+    background:var(--surface-strong);
+    border-color:rgba(255,255,255,.3);
+    transform:translateY(-4px);
 }
 
-
-/* ========================================= */
-/* PREMIUM BACKGROUND */
-/* ========================================= */
-
-#bgCanvas{
-
-    position:fixed;
-
-    top:0;
-
-    left:0;
-
-    width:100%;
-
-    height:100%;
-
-    z-index:-10;
-
-}
-
-.bg-overlay{
-
-    position:fixed;
-
-    inset:0;
-
-    background:
-    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85));
-
-    z-index:-9;
-
-}
-
-/* ========================================= */
-/* GOLD LIGHT EFFECTS */
-/* ========================================= */
-
-.light1{
-
-    position:fixed;
-
-    width:500px;
-
-    height:500px;
-
+/* ripple for buttons */
+.ripple{
+    position:absolute;
     border-radius:50%;
-
-    background:radial-gradient(circle,#FFD700,transparent);
-
-    filter:blur(120px);
-
-    top:-150px;
-
-    left:-100px;
-
-    opacity:.22;
-
-    animation:lightMove1 16s infinite alternate;
-
-    z-index:-8;
-
-}
-
-.light2{
-
-    position:fixed;
-
-    width:450px;
-
-    height:450px;
-
-    border-radius:50%;
-
-    background:radial-gradient(circle,#ff9900,transparent);
-
-    filter:blur(120px);
-
-    right:-120px;
-
-    bottom:-150px;
-
-    opacity:.20;
-
-    animation:lightMove2 18s infinite alternate;
-
-    z-index:-8;
-
-}
-
-@keyframes lightMove1{
-
-    100%{
-
-        transform:translate(250px,180px);
-
-    }
-
-}
-
-@keyframes lightMove2{
-
-    100%{
-
-        transform:translate(-250px,-180px);
-
-    }
-
-}
-
-/* ========================================= */
-/* PARTICLES */
-/* ========================================= */
-
-.particles{
-
-    position:fixed;
-
-    inset:0;
-
-    background-image:
-
-    radial-gradient(gold 1px,transparent 1px);
-
-    background-size:40px 40px;
-
-    animation:particleMove 25s linear infinite;
-
-    opacity:.25;
-
-    z-index:-7;
-
-}
-
-@keyframes particleMove{
-
-    from{
-
-        background-position:0 0;
-
-    }
-
-    to{
-
-        background-position:0 -600px;
-
-    }
-
-}
-
-
-/* ========================================= */
-/* SMOKE */
-/* ========================================= */
-
-.smoke{
-
-    position:fixed;
-
-    inset:0;
-
-    background:url("images/smoke.png");
-
-    background-size:cover;
-
-    background-repeat:no-repeat;
-
-    opacity:.06;
-
-    animation:smokeMove 45s linear infinite;
-
-    z-index:-6;
-
-}
-
-@keyframes smokeMove{
-
-    from{
-
-        transform:translateX(0);
-
-    }
-
-    to{
-
-        transform:translateX(-500px);
-
-    }
-
-}
-
-
-/* ========================================= */
-/* CUSTOM CURSOR */
-/* ========================================= */
-
-.cursor{
-
-    position:fixed;
-
-    width:20px;
-
-    height:20px;
-
-    border-radius:50%;
-
-    background:gold;
-
+    background:rgba(255,255,255,.5);
+    transform:scale(0);
+    animation:rippleAnim .7s var(--ease);
     pointer-events:none;
-
-    transform:translate(-50%,-50%);
-
-    box-shadow:
-
-    0 0 20px gold,
-
-    0 0 40px gold,
-
-    0 0 60px gold;
-
-    z-index:999999;
-
 }
 
+@keyframes rippleAnim{ to{ transform:scale(18); opacity:0; } }
 
-/* ========================================= */
-/* TRUST BOX */
-/* ========================================= */
-
-.trust-box{
-
-    display:flex;
-
-    gap:18px;
-
-    flex-wrap:wrap;
-
-    margin-top:40px;
-
-}
+.trust-box{ display:flex; gap:14px; flex-wrap:wrap; margin-top:44px; }
 
 .trust-box div{
-
-    background:rgba(255,255,255,.06);
-
-    backdrop-filter:blur(15px);
-
-    border:1px solid rgba(255,215,0,.18);
-
-    padding:14px 22px;
-
+    background:var(--surface);
+    backdrop-filter:blur(16px);
+    border:1px solid var(--border);
+    padding:12px 20px;
     border-radius:40px;
-
-    transition:.4s;
-
+    font-size:13px;
+    color:var(--text-dim);
+    transition:.4s var(--ease);
 }
 
 .trust-box div:hover{
-
-    transform:translateY(-6px);
-
-    box-shadow:0 0 20px rgba(255,215,0,.35);
-
+    transform:translateY(-4px);
+    color:var(--text);
+    border-color:var(--border-strong);
+    box-shadow:0 10px 30px rgba(255,255,255,.08);
 }
 
+/* ========================================================= */
+/* AMBIENT BACKGROUND — dialed down, elegant not gamer-neon */
+/* ========================================================= */
 
-/* ========================================= */
-/* HERO GLOW */
-/* ========================================= */
+#bgCanvas{ position:fixed; top:0; left:0; width:100%; height:100%; z-index:-10; }
 
-.hero::before{
+.bg-overlay{
+    position:fixed; inset:0;
+    background:radial-gradient(ellipse at 50% 0%,rgba(30,40,60,.4),transparent 60%),
+               linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.75));
+    z-index:-9;
+}
 
-    content:"";
+.light1{
+    position:fixed; width:500px; height:500px; border-radius:50%;
+    background:radial-gradient(circle,rgba(120,170,255,.28),transparent 70%);
+    filter:blur(120px);
+    top:-150px; left:-100px;
+    opacity:.5;
+    animation:lightMove1 18s infinite alternate;
+    z-index:-8;
+}
 
-    position:absolute;
+.light2{
+    position:fixed; width:450px; height:450px; border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%);
+    filter:blur(120px);
+    right:-120px; bottom:-150px;
+    opacity:.5;
+    animation:lightMove2 20s infinite alternate;
+    z-index:-8;
+}
 
-    width:650px;
+@keyframes lightMove1{ 100%{ transform:translate(220px,160px); } }
+@keyframes lightMove2{ 100%{ transform:translate(-220px,-160px); } }
 
-    height:650px;
+.particles{
+    position:fixed; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.5) 1px,transparent 1px);
+    background-size:46px 46px;
+    animation:particleMove 30s linear infinite;
+    opacity:.05;
+    z-index:-7;
+}
 
+@keyframes particleMove{ from{ background-position:0 0; } to{ background-position:0 -600px; } }
+
+.smoke{
+    position:fixed; inset:0;
+    background:url("images/smoke.png");
+    background-size:cover;
+    background-repeat:no-repeat;
+    opacity:.035;
+    animation:smokeMove 50s linear infinite;
+    z-index:-6;
+}
+
+@keyframes smokeMove{ from{ transform:translateX(0); } to{ transform:translateX(-500px); } }
+
+/* ========================================================= */
+/* CUSTOM CURSOR — soft ring, not a gold ball */
+/* ========================================================= */
+
+.cursor{
+    position:fixed;
+    width:22px; height:22px;
     border-radius:50%;
-
-    background:radial-gradient(circle,rgba(255,215,0,.18),transparent);
-
-    filter:blur(100px);
-
-    right:5%;
-
-    top:10%;
-
-    z-index:-5;
-
+    border:1px solid rgba(255,255,255,.55);
+    background:rgba(255,255,255,.04);
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    mix-blend-mode:difference;
+    transition:width .25s var(--ease), height .25s var(--ease);
+    z-index:999999;
 }
 
 @keyframes floatLogo{
-
-    0%{
-
-        transform:translateY(0);
-
-    }
-
-    50%{
-
-        transform:translateY(-18px);
-
-    }
-
-    100%{
-
-        transform:translateY(0);
-
-    }
-
+    0%{ transform:translateY(0); }
+    50%{ transform:translateY(-16px); }
+    100%{ transform:translateY(0); }
 }
 
-/* ========================================= */
-/* PRODUCTS SECTION */
-/* ========================================= */
-
-.products{
-
-    padding:120px 8%;
-    text-align:center;
-
+.hero::before{
+    content:"";
+    position:absolute;
+    width:600px; height:600px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(120,170,255,.10),transparent 70%);
+    filter:blur(100px);
+    right:5%; top:10%;
+    z-index:-5;
 }
+
+/* ========================================================= */
+/* SECTION TITLES */
+/* ========================================================= */
 
 .section-title{
-
-    font-family:'Chakra Petch',sans-serif;
-    font-size:48px;
-    color:#fff;
-    margin-bottom:15px;
-
+    font-family:'Inter',sans-serif;
+    font-weight:700;
+    font-size:42px;
+    letter-spacing:-1px;
+    color:var(--text);
+    margin-bottom:14px;
 }
 
 .section-subtitle{
-
-    color:#bbb;
+    color:var(--text-mute);
     margin-bottom:60px;
-
+    font-size:15px;
 }
 
-.product-container{
+/* ========================================================= */
+/* PRODUCTS — glass cards with iridescent signature edge      */
+/* ========================================================= */
 
+.products{ padding:120px 8%; text-align:center; position:relative; }
+
+.product-container{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:35px;
-
+    gap:28px;
 }
 
 .product-card{
-
     position:relative;
-
-    background:rgba(255,255,255,.05);
-
-    backdrop-filter:blur(20px);
-
-    border:1px solid rgba(255,215,0,.18);
-
-    border-radius:25px;
-
-    padding:35px;
-
-    transition:.5s;
-
+    background:var(--surface);
+    backdrop-filter:blur(24px) saturate(140%);
+    -webkit-backdrop-filter:blur(24px) saturate(140%);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:32px;
+    text-align:left;
+    transition:transform .5s var(--ease), border-color .5s var(--ease), box-shadow .5s var(--ease);
+    overflow:hidden;
+    isolation:isolate;
 }
+
+/* signature: rotating conic-gradient rim that reveals on hover */
+.product-card::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    border-radius:inherit;
+    padding:2px;
+    background:conic-gradient(from 0deg,#7ab8ff,#ffffff,#c9a9ff,#7ab8ff);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+    opacity:0;
+    transition:opacity .5s var(--ease);
+    animation:spinRim 6s linear infinite;
+    z-index:-1;
+}
+
+.product-card:hover::before{ opacity:.55; }
 
 .product-card:hover{
-
-    transform:translateY(-12px);
-
-    box-shadow:0 0 40px rgba(255,215,0,.35);
-
+    transform:translateY(-10px);
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
 }
 
+@keyframes spinRim{ to{ transform:rotate(360deg); } }
+
 .product-card img{
-
     width:100%;
-
-    height:220px;
-
+    height:200px;
     object-fit:cover;
-
     object-position:top;
-
-    margin:0 auto 20px;
-
-    border-radius:14px;
-
-    box-shadow:0 0 25px rgba(255,215,0,.25);
-
+    margin:0 auto 22px;
+    border-radius:var(--radius-sm);
 }
 
 .product-card h3{
-
-    margin:15px 0;
-
-    font-size:28px;
-
+    margin:0 0 12px;
+    font-size:22px;
+    font-weight:600;
+    color:var(--text);
 }
 
 .product-card p{
-
-    color:#ccc;
-
-    line-height:30px;
-
+    color:var(--text-dim);
+    line-height:1.8;
+    font-size:14px;
 }
 
 .badge{
-
     position:absolute;
-
-    top:18px;
-
-    right:18px;
-
-    background:gold;
-
-    color:#111;
-
-    padding:8px 18px;
-
+    top:18px; right:18px;
+    background:rgba(255,255,255,.9);
+    color:#0a0a0a;
+    padding:6px 16px;
     border-radius:30px;
-
-    font-weight:bold;
-
+    font-weight:600;
+    font-size:11px;
+    letter-spacing:.5px;
+    z-index:2;
 }
 
-
-/* ========================================= */
+/* ========================================================= */
 /* COUNTER */
-/* ========================================= */
+/* ========================================================= */
 
 .counter{
-
-    padding:120px 8%;
-
+    padding:100px 8%;
     display:grid;
-
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-    gap:35px;
-
+    gap:24px;
 }
 
 .counter-box{
-
-    background:rgba(255,255,255,.05);
-
+    background:var(--surface);
     backdrop-filter:blur(20px);
-
-    border-radius:20px;
-
-    padding:35px;
-
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    padding:32px;
     text-align:center;
-
-    transition:.4s;
-
+    transition:.4s var(--ease);
 }
 
 .counter-box:hover{
-
-    transform:translateY(-10px);
-
+    transform:translateY(-8px);
+    border-color:var(--border-strong);
 }
 
 .counter-box h2{
-
-    font-family:'Chakra Petch';
-
-    color:gold;
-
-    font-size:52px;
-
+    font-family:'Inter',sans-serif;
+    font-weight:700;
+    color:var(--text);
+    font-size:44px;
+    letter-spacing:-1px;
 }
 
-.counter-box p{
+.counter-box p{ color:var(--text-mute); margin-top:8px; font-size:13.5px; }
 
-    color:#ccc;
-
-    margin-top:10px;
-
-}
-
-
-/* ========================================= */
+/* ========================================================= */
 /* REVIEWS */
-/* ========================================= */
+/* ========================================================= */
 
-.reviews{
-
-    padding:120px 8%;
-
-    text-align:center;
-
-}
+.reviews{ padding:120px 8%; text-align:center; }
 
 .review-container{
-
     display:grid;
-
     grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-
-    gap:30px;
-
-    margin-top:60px;
-
+    gap:24px;
+    margin-top:56px;
 }
 
 .review-card{
-
-    background:rgba(255,255,255,.05);
-
+    background:var(--surface);
     backdrop-filter:blur(18px);
-
-    border-radius:25px;
-
-    padding:35px;
-
-    transition:.4s;
-
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    padding:32px;
+    transition:.4s var(--ease);
+    font-size:15px;
 }
 
 .review-card:hover{
-
-    transform:translateY(-10px);
-
-    box-shadow:0 0 35px rgba(255,215,0,.25);
-
+    transform:translateY(-8px);
+    border-color:var(--border-strong);
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
 }
 
-.review-card p{
+.review-card p{ color:var(--text-dim); line-height:1.7; margin:18px 0; }
+.review-card h4{ color:var(--text); font-weight:600; font-size:14px; }
 
-    color:#ddd;
-
-    line-height:30px;
-
-    margin:20px 0;
-
-}
-
-.review-card h4{
-
-    color:gold;
-
-}
-
-/* ========================================= */
+/* ========================================================= */
 /* TRUST SECTION */
-/* ========================================= */
+/* ========================================================= */
 
 .trust{
-
-    padding:100px 8%;
-
+    padding:90px 8%;
     display:grid;
-
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-
-    gap:25px;
-
+    gap:18px;
 }
 
 .trust-card{
-
-    background:rgba(255,255,255,.05);
-
+    background:var(--surface);
     backdrop-filter:blur(18px);
-
-    padding:28px;
-
-    border-radius:20px;
-
+    padding:26px;
+    border-radius:var(--radius-md);
     text-align:center;
-
-    transition:.4s;
-
-    border:1px solid rgba(255,215,0,.15);
-
+    font-size:14px;
+    color:var(--text-dim);
+    transition:.4s var(--ease);
+    border:1px solid var(--border);
 }
 
 .trust-card:hover{
-
-    transform:translateY(-10px);
-
-    box-shadow:0 0 35px rgba(255,215,0,.30);
-
+    transform:translateY(-8px);
+    color:var(--text);
+    border-color:var(--border-strong);
 }
 
-/* ========================================= */
+/* ========================================================= */
 /* CONTACT */
-/* ========================================= */
+/* ========================================================= */
 
-.contact{
-
-    padding:120px 8%;
-
-    text-align:center;
-
-}
+.contact{ padding:120px 8%; text-align:center; }
+.contact p{ color:var(--text-mute); margin-top:10px; }
 
 .contact-buttons{
-
-    margin-top:40px;
-
+    margin-top:38px;
     display:flex;
-
     justify-content:center;
-
-    gap:25px;
-
+    gap:20px;
     flex-wrap:wrap;
-
 }
 
-.telegram-btn,
-
-.whatsapp-btn{
-
-    padding:18px 40px;
-
+.telegram-btn, .whatsapp-btn{
+    padding:16px 36px;
     border-radius:50px;
-
     font-weight:600;
-
-    transition:.4s;
-
+    font-size:14.5px;
+    transition:.4s var(--ease);
+    border:1px solid var(--border);
+    backdrop-filter:blur(14px);
 }
 
-.telegram-btn{
+.telegram-btn{ background:rgba(59,157,255,.12); color:#a8d3ff; }
+.whatsapp-btn{ background:rgba(37,211,102,.12); color:#8fe6ab; }
 
-    background:#0088cc;
-
-    color:white;
-
+.telegram-btn:hover, .whatsapp-btn:hover{
+    transform:translateY(-5px);
+    border-color:var(--border-strong);
 }
 
-.whatsapp-btn{
-
-    background:#25D366;
-
-    color:white;
-
-}
-
-.telegram-btn:hover,
-
-.whatsapp-btn:hover{
-
-    transform:translateY(-6px);
-
-}
-
-/* ========================================= */
+/* ========================================================= */
 /* FLOATING BUTTONS */
-/* ========================================= */
+/* ========================================================= */
 
-.floating-telegram,
-
-.floating-whatsapp{
-
+.floating-telegram, .floating-whatsapp{
     position:fixed;
-
-    right:25px;
-
-    width:58px;
-
-    height:58px;
-
+    right:24px;
+    width:52px; height:52px;
     border-radius:50%;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
-    color:white;
-
-    font-size:26px;
-
+    color:#fff;
+    font-size:22px;
     z-index:999;
-
+    backdrop-filter:blur(14px);
+    border:1px solid var(--border);
+    transition:transform .35s var(--ease);
 }
 
-.floating-telegram{
+.floating-telegram:hover, .floating-whatsapp:hover{ transform:scale(1.1); }
 
-    bottom:120px;
+.floating-telegram{ bottom:112px; background:rgba(59,157,255,.25); }
+.floating-whatsapp{ bottom:44px; background:rgba(37,211,102,.25); }
 
-    background:#0088cc;
-
-}
-
-.floating-whatsapp{
-
-    bottom:45px;
-
-    background:#25D366;
-
-}
-
-/* ========================================= */
+/* ========================================================= */
 /* PURCHASE POPUP */
-/* ========================================= */
+/* ========================================================= */
 
 #purchasePopup{
-
     position:fixed;
-
-    left:25px;
-
-    bottom:25px;
-
-    background:#111;
-
-    color:white;
-
-    padding:18px 28px;
-
-    border-left:4px solid gold;
-
+    left:24px; bottom:24px;
+    background:rgba(15,15,18,.85);
+    backdrop-filter:blur(16px);
+    color:var(--text);
+    font-size:13.5px;
+    padding:16px 24px;
+    border-left:2px solid var(--accent-blue);
     border-radius:12px;
-
+    border:1px solid var(--border);
     animation:popup 6s infinite;
-
 }
 
 @keyframes popup{
-
-    0%{
-
-        transform:translateX(-350px);
-
-    }
-
-    20%,80%{
-
-        transform:translateX(0);
-
-    }
-
-    100%{
-
-        transform:translateX(-350px);
-
-    }
-
+    0%{ transform:translateX(-380px); opacity:0; }
+    10%{ opacity:1; }
+    20%,80%{ transform:translateX(0); opacity:1; }
+    95%{ opacity:0; }
+    100%{ transform:translateX(-380px); opacity:0; }
 }
 
-/* ========================================= */
+/* ========================================================= */
 /* MUSIC BUTTON */
-/* ========================================= */
+/* ========================================================= */
 
 #musicBtn{
-
     position:fixed;
-
-    left:25px;
-
-    bottom:110px;
-
-    width:60px;
-
-    height:60px;
-
-    border:none;
-
+    left:24px; bottom:106px;
+    width:52px; height:52px;
+    border:1px solid var(--border);
     border-radius:50%;
-
-    background:gold;
-
-    color:#111;
-
-    font-size:24px;
-
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(14px);
+    color:#fff;
+    font-size:20px;
     cursor:pointer;
-
-    box-shadow:0 0 25px rgba(255,215,0,.5);
-
-    transition:.3s;
-
+    transition:.3s var(--ease);
     z-index:999;
-
 }
 
-#musicBtn:hover{
+#musicBtn:hover{ transform:scale(1.08); background:rgba(255,255,255,.14); }
 
-    transform:scale(1.1);
-
-}
-
-
-/* ========================================= */
+/* ========================================================= */
 /* PROGRESS BAR */
-/* ========================================= */
+/* ========================================================= */
 
 #progressBar{
-
     position:fixed;
-
-    top:0;
-
-    left:0;
-
-    width:0;
-
-    height:4px;
-
-    background:linear-gradient(90deg,#FFD700,#ffffff,#FFD700);
-
+    top:0; left:0;
+    width:0; height:2.5px;
+    background:linear-gradient(90deg,#7ab8ff,#fff,#c9a9ff);
     z-index:999999;
-
 }
 
+/* ========================================================= */
+/* TOP BUTTON (injected via JS) */
+/* ========================================================= */
 
-/* ========================================= */
+.top-btn{
+    background:rgba(255,255,255,.12) !important;
+    backdrop-filter:blur(14px);
+    border:1px solid var(--border);
+    color:#fff !important;
+    box-shadow:none !important;
+}
+
+.top-btn:hover{ background:rgba(255,255,255,.2) !important; }
+
+/* ========================================================= */
 /* FOOTER */
-/* ========================================= */
+/* ========================================================= */
 
 footer{
-
-    padding:80px 8%;
-
+    padding:70px 8%;
     text-align:center;
-
-    background:rgba(255,255,255,.04);
-
+    background:rgba(255,255,255,.03);
     backdrop-filter:blur(20px);
-
-    border-top:1px solid rgba(255,255,255,.08);
-
+    border-top:1px solid var(--border);
 }
 
 footer img{
-
-    width:90px;
-
-    margin:auto;
-
-    margin-bottom:20px;
-
-    filter:drop-shadow(0 0 20px gold);
-
+    width:64px;
+    margin:auto auto 18px;
+    filter:drop-shadow(0 0 20px rgba(255,255,255,.2));
 }
 
 footer h2{
-
-    font-family:'Chakra Petch',sans-serif;
-
-    color:#fff;
-
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    color:var(--text);
     margin-bottom:10px;
-
+    font-size:16px;
 }
 
-footer p{
+footer p{ color:var(--text-mute); line-height:1.7; font-size:13.5px; }
 
-    color:#aaa;
-
-    line-height:28px;
-
-}
-
-
-/* ========================================= */
-/* HOVER EFFECTS */
-/* ========================================= */
+/* ========================================================= */
+/* FADE-IN REVEAL (base state; JS drives the transition) */
+/* ========================================================= */
 
 .product-card,
 .review-card,
 .counter-box,
 .trust-card{
-
-    transition:.45s;
-
+    opacity:0;
+    transform:translateY(36px);
 }
-
-.product-card:hover,
-.review-card:hover,
-.counter-box:hover,
-.trust-card:hover{
-
-    transform:translateY(-10px);
-
-    box-shadow:0 0 35px rgba(255,215,0,.30);
-
-}
-
-/* ========================================= */
-/* FADE ANIMATION */
-/* ========================================= */
 
 .fade{
-
-    animation:fadeIn 1s ease;
-
+    animation:fadeIn 1s var(--ease) forwards;
 }
 
 @keyframes fadeIn{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(40px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
+    from{ opacity:0; transform:translateY(36px); }
+    to{ opacity:1; transform:translateY(0); }
 }
 
-/* ========================================= */
+/* ========================================================= */
 /* RESPONSIVE */
-/* ========================================= */
+/* ========================================================= */
 
 @media(max-width:991px){
-
-.hero{
-
-    flex-direction:column;
-
-    text-align:center;
-
-    padding-top:150px;
-
-}
-
-.hero-content{
-
-    width:100%;
-
-}
-
-.hero-image{
-
-    width:80%;
-
-    margin-top:50px;
-
-}
-
-.hero h1{
-
-    font-size:48px;
-
-    line-height:58px;
-
-}
-
-.navbar{
-
-    padding:15px 20px;
-
-}
-
-.navbar ul{
-
-    display:none;
-
-}
-
-.hero-buttons{
-
-    justify-content:center;
-
-}
-
+    .hero{ flex-direction:column; text-align:center; padding-top:150px; }
+    .hero-content{ width:100%; }
+    .hero-image{ width:70%; margin-top:50px; }
+    .hero h1{ font-size:42px; }
+    .hero p{ margin-left:auto; margin-right:auto; }
+    .navbar{ padding:14px 20px; }
+    .navbar ul{ display:none; }
+    .hero-buttons{ justify-content:center; }
 }
 
 @media(max-width:768px){
-
-.section-title{
-
-    font-size:34px;
-
-}
-
-.product-container{
-
-    grid-template-columns:1fr;
-
-}
-
-.review-container{
-
-    grid-template-columns:1fr;
-
-}
-
-.counter{
-
-    grid-template-columns:1fr 1fr;
-
-}
-
-.contact-buttons{
-
-    flex-direction:column;
-
-}
-
-.floating-telegram,
-
-.floating-whatsapp{
-
-    width:50px;
-
-    height:50px;
-
-    font-size:20px;
-
-}
-
+    .section-title{ font-size:30px; }
+    .product-container{ grid-template-columns:1fr; }
+    .review-container{ grid-template-columns:1fr; }
+    .counter{ grid-template-columns:1fr 1fr; }
+    .contact-buttons{ flex-direction:column; }
+    .floating-telegram, .floating-whatsapp{ width:46px; height:46px; font-size:19px; }
+    .cursor{ display:none; }
 }
 
 @media(max-width:480px){
-
-.hero h1{
-
-    font-size:36px;
-
-    line-height:46px;
-
+    .hero h1{ font-size:32px; }
+    .counter{ grid-template-columns:1fr; }
+    .loader-logo{ width:76px; }
 }
 
-.counter{
-
-    grid-template-columns:1fr;
-
+/* Respect reduced motion */
+@media(prefers-reduced-motion:reduce){
+    *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
 }
 
-.loader-logo{
-
-    width:90px;
-
-}
-
-}
-
-/* ========================================= */
-/* TEXT SELECTION */
-/* ========================================= */
-
-::selection{
-
-    background:gold;
-
-    color:#111;
-
-}
-
-
-/* ========================================= */
+/* ========================================================= */
 /* PAGE LOAD */
-/* ========================================= */
+/* ========================================================= */
 
-body{
-
-    animation:pageLoad .8s ease;
-
-}
-
-@keyframes pageLoad{
-
-    from{
-
-        opacity:0;
-
-    }
-
-    to{
-
-        opacity:1;
-
-    }
-
-}
+body{ animation:pageLoad .8s ease; }
+@keyframes pageLoad{ from{ opacity:0; } to{ opacity:1; } }
