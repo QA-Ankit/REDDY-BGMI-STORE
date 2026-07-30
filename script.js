@@ -268,27 +268,20 @@ cards.forEach(card=>{
 
         const y = e.clientY - rect.top;
 
-        // soft cool-white glow that follows the cursor (Apple-glass feel)
-        card.style.background =
-        `radial-gradient(circle at ${x}px ${y}px,
-        rgba(255,255,255,.10),
-        rgba(255,255,255,.05) 55%)`;
-
-        // subtle 3D tilt toward the cursor
+        // subtle 3D tilt toward the cursor (glass-blob background stays untouched)
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         const rotateX = ((y - centerY) / centerY) * -4;
         const rotateY = ((x - centerX) / centerX) * 4;
 
         card.style.transform =
-        `translateY(-10px) perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        `translateY(-12px) scale(1.015) perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 
     });
 
     card.addEventListener("mouseleave",()=>{
 
-        card.style.background="rgba(255,255,255,.05)";
-        card.style.transform="translateY(0px) perspective(800px) rotateX(0deg) rotateY(0deg)";
+        card.style.transform="";
 
     });
 
