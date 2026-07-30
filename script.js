@@ -36,6 +36,48 @@ window.addEventListener("scroll", () => {
 });
 
 
+/* Apple Mouse Glow — big soft blob trailing the cursor */
+
+const glow = document.querySelector(".cursor-glow");
+
+if(glow){
+
+    window.addEventListener("mousemove",(e)=>{
+
+        glow.style.left = e.clientX + "px";
+
+        glow.style.top = e.clientY + "px";
+
+    });
+
+}
+
+
+/* Glass Section Reveal */
+
+const revealSections = document.querySelectorAll(".reveal-section");
+
+const sectionObserver = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+        }
+
+    });
+
+},{ threshold:0.15 });
+
+revealSections.forEach(section=>{
+
+    sectionObserver.observe(section);
+
+});
+
+
 /* Custom Cursor */
 
 const cursor = document.querySelector(".cursor");
