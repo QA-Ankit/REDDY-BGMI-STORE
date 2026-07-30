@@ -268,16 +268,27 @@ cards.forEach(card=>{
 
         const y = e.clientY - rect.top;
 
+        // soft cool-white glow that follows the cursor (Apple-glass feel)
         card.style.background =
         `radial-gradient(circle at ${x}px ${y}px,
-        rgba(255,215,0,.18),
-        rgba(255,255,255,.05) 60%)`;
+        rgba(255,255,255,.10),
+        rgba(255,255,255,.05) 55%)`;
+
+        // subtle 3D tilt toward the cursor
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -4;
+        const rotateY = ((x - centerX) / centerX) * 4;
+
+        card.style.transform =
+        `translateY(-10px) perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 
     });
 
     card.addEventListener("mouseleave",()=>{
 
         card.style.background="rgba(255,255,255,.05)";
+        card.style.transform="translateY(0px) perspective(800px) rotateX(0deg) rotateY(0deg)";
 
     });
 
@@ -325,13 +336,13 @@ window.addEventListener("scroll",()=>{
 
     if(window.scrollY>80){
 
-        navbar.style.background="rgba(0,0,0,.75)";
+        navbar.style.background="rgba(8,8,10,.75)";
 
-        navbar.style.boxShadow="0 10px 35px rgba(255,215,0,.18)";
+        navbar.style.boxShadow="0 10px 35px rgba(0,0,0,.35)";
 
     }else{
 
-        navbar.style.background="rgba(255,255,255,.05)";
+        navbar.style.background="rgba(10,10,12,.55)";
 
         navbar.style.boxShadow="none";
 
@@ -393,18 +404,15 @@ topBtn.style.cssText = `
 position:fixed;
 right:25px;
 bottom:190px;
-width:55px;
-height:55px;
-background:gold;
-color:#111;
+width:52px;
+height:52px;
 display:flex;
 justify-content:center;
 align-items:center;
 border-radius:50%;
 cursor:pointer;
-font-size:22px;
+font-size:20px;
 font-weight:bold;
-box-shadow:0 0 20px rgba(255,215,0,.5);
 opacity:0;
 transition:.4s;
 z-index:999;
@@ -445,13 +453,30 @@ document.querySelectorAll(".buy-btn,.join-btn,.telegram-btn,.whatsapp-btn").forE
 
     btn.addEventListener("mouseenter",()=>{
 
-        btn.style.boxShadow="0 0 35px rgba(255,215,0,.6)";
+        btn.style.boxShadow="0 8px 35px rgba(255,255,255,.22)";
 
     });
 
     btn.addEventListener("mouseleave",()=>{
 
         btn.style.boxShadow="none";
+
+    });
+
+    // liquid/magnetic hover: button subtly follows the cursor
+    btn.addEventListener("mousemove",(e)=>{
+
+        const rect = btn.getBoundingClientRect();
+        const x = (e.clientX - rect.left - rect.width / 2) * 0.25;
+        const y = (e.clientY - rect.top - rect.height / 2) * 0.25;
+
+        btn.style.transform = `translate(${x}px, ${y}px)`;
+
+    });
+
+    btn.addEventListener("mouseleave",()=>{
+
+        btn.style.transform = "translate(0px, 0px)";
 
     });
 
